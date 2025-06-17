@@ -19,10 +19,10 @@ FROM openjdk:17
 WORKDIR /app
  
 # Copy the built jar file from the build stage
-COPY --from=builder /app/target/*.war recipe-app.war
+COPY --from=builder /app/target/*.jar recipe-app.jar
  
 # Expose the application port
 EXPOSE 9093:8080
  
 # Define the entrypoint to run the application
-ENTRYPOINT ["java", "-war", "recipe-app.war"]
+ENTRYPOINT ["java", "-jar", "recipe-app.jar"]
